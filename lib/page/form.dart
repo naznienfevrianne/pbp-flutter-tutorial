@@ -1,5 +1,7 @@
 import 'package:appnaz/main.dart';
 import 'package:flutter/material.dart';
+import 'package:appnaz/page/to_do_page.dart';
+import 'package:appnaz/model/to_do.dart';
 
 class MyFormPage extends StatefulWidget {
     const MyFormPage({super.key});
@@ -19,6 +21,7 @@ class _MyFormPageState extends State<MyFormPage> {
     double umur = 0;
     String kelasPBP = 'A';
     List<String> listKelasPBP = ['A', 'B', 'C', 'D', 'E', 'F', 'KI'];   
+    
     @override
     Widget build(BuildContext context) {
         return Scaffold(
@@ -27,29 +30,39 @@ class _MyFormPageState extends State<MyFormPage> {
             ),
             drawer: Drawer(
             child: Column(
-            children: [
-                // Menambahkan clickable menu
-                ListTile(
-                title: const Text('Counter'),
-                onTap: () {
-                    // Route menu ke halaman utama
-                    Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => const MyHomePage()),
-                    );
-                },
-                ),
-                ListTile(
-                title: const Text('Form'),
-                onTap: () {
-                    // Route menu ke halaman form
-                    Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => const MyFormPage()),
-                    );
-                },
-                ),
-            ],
+                children: [
+                    // Menambahkan clickable menu
+                    ListTile(
+                    title: const Text('Counter'),
+                    onTap: () {
+                        // Route menu ke halaman utama
+                            Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => const MyHomePage()),
+                            );
+                        },
+                    ),
+                    ListTile(
+                    title: const Text('Form'),
+                    onTap: () {
+                        // Route menu ke halaman form
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => const MyFormPage()),
+                            );
+                        },
+                    ),
+                    ListTile(
+                    title: const Text('To Do'),
+                    onTap: () {
+                        // Route menu ke halaman to do
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => const ToDoPage()),
+                            );
+                        },
+                    ),
+                ],
             ),
         ),
             body: Form(
@@ -147,12 +160,12 @@ class _MyFormPageState extends State<MyFormPage> {
                                             title: const Text('Doktor'),
                                             value: jenjangDoktor,
                                             onChanged: (bool? value) {
-                                            setState(() {
-                                                jenjangDoktor = value!;
-                                                if (value){
-                                                    jenjangMagister = jenjangSarjana = jenjangDiploma = false;
-                                                }
-                                            });
+                                                setState(() {
+                                                    jenjangDoktor = value!;
+                                                    if (value){
+                                                        jenjangMagister = jenjangSarjana = jenjangDiploma = false;
+                                                    }
+                                                });
                                             },
                                         ),
                                     ],
